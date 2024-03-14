@@ -1,0 +1,35 @@
+services:
+  db:
+    container_name: mongo-dev
+    image: mongo:4.2
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=admin
+      - MONGO_INITDB_DATABASE=auth
+      - MONGO_INITDB_ROOT_PASSWORD=pass
+    networks: 
+      - mongo-compose-network
+    ports:
+      - '27017:27017'
+    volumes: 
+      - ./data:/data/db
+  
+  mongo-express:
+    container_name: mongo-express
+    image: mongo-express
+    depends_on:
+      - db
+    networks: 
+      - mongo-compose-network
+    environment:
+      - ME_CONFIG_MONGODB_SERVER=mongo-dev
+      - ME_CONFIG_MONGODB_ADMINUSERNAME=admin
+      - ME_CONFIG_MONGODB_ADMINPASSWORD=pass
+      - ME_CONFIG_BASICAUTH_USERNAME=admin
+      - ME_CONFIG_BASICAUTH_PASSWORD=tribes
+    ports:
+      - '8081:8081'
+    volumes: 
+      - ./data:/data/db 
+
+networks:
+  mongo-compose-network:
