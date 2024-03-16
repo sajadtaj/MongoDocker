@@ -1,0 +1,24 @@
+show dbs
+use iran
+show dbs
+show dbs
+help
+show users
+help admin
+show users
+use admin
+show users
+use city
+db.city.insertOne({'iran':tehran''})
+db.city.insertOne({'iran':'tehran'})
+show dbs
+db.city.find()
+db.city.insertOne({'_id':'my_next_job_coutry','USA':'NewYork'})
+db.city.find()
+db.city.insertOne({'France':'Paris','England':'london'})
+db.city.insertOne({'France':'Paris','England':'london','Turkey':Istanbul''})
+db.city.insertOne({'France':'Paris','England':'london','Turkey':'Istanbul'})
+db.city.find()
+clear
+dbs
+show dbs
